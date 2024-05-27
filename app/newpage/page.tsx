@@ -1,4 +1,4 @@
-'use client';
+"use client"
 import React, { useState } from 'react';
 import StarRating from '../StarRating/page';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,26 +7,26 @@ import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 const ReviewForm = () => {
     const [safetyRating, setSafetyRating] = useState(0);
     const [communicationRating, setCommunicationRating] = useState(0);
-    const [recommend, setRecommend] = useState<null | boolean>(null);
+    const [recommend, setRecommend] = useState(null); // use null for initial state
     const [praise, setPraise] = useState('');
 
-    const handleSafetyRatingChange = (newRating: number) => {
+    const handleSafetyRatingChange = (newRating) => {
         setSafetyRating(newRating);
     };
 
-    const handleCommunicationRatingChange = (newRating: number) => {
+    const handleCommunicationRatingChange = (newRating) => {
         setCommunicationRating(newRating);
     };
 
-    const handleRecommend = (value: boolean) => {
+    const handleRecommend = (value) => {
         setRecommend(value);
     };
 
-    const handlePraiseChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const handlePraiseChange = (e) => {
         setPraise(e.target.value);
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         const review = {
             safetyRating,
@@ -46,22 +46,24 @@ const ReviewForm = () => {
     return (
         <div className="reviewForm">
             <h1 style={{ fontSize: '2em', fontWeight: 'bold' }}>Leave a Review</h1>
-            <form onSubmit={handleSubmit} style={{ textAlign: 'center' }}>
+
+        
+            <form onSubmit={handleSubmit}>
                 <div className="ratingSection">
                     <div className="starRating">
-                        <h2>Safety</h2>
+                        <h1 style={{fontSize:'1.5em',fontWeight:'bold'}}>Safety</h1>
                         <p>Add your rating on our safety</p>
                         <StarRating value={safetyRating} onChange={handleSafetyRatingChange} />
                     </div>
                     <div className="starRating">
-                        <h2>Communication</h2>
+                        <h1 style={{ fontSize: '1.5em', fontWeight: 'bold' }}>Communication</h1>
                         <p>Add your rating on our communication</p>
                         <StarRating value={communicationRating} onChange={handleCommunicationRatingChange} />
                     </div>
                 </div>
 
                 <div className="recommendSection">
-                    <h2>Would You Recommend Trusti?</h2>
+                    <h2 style={{ fontSize: '1.5em', fontWeight: 'bold' }}>Would You Recommend Trusti?</h2>
                     <div>
                         <button
                             type="button"
@@ -94,9 +96,9 @@ const ReviewForm = () => {
                     </div>
                 </div>
                 <div className="praiseSection">
-                    <h2>Praise</h2>
+                    <h2 style={{ fontSize: '1.5em', fontWeight: 'bold' }}>Praise</h2>
                     <textarea
-                        rows="4"
+                        rows="2"
                         cols="30"
                         value={praise}
                         onChange={handlePraiseChange}
@@ -106,13 +108,16 @@ const ReviewForm = () => {
                 <button
                     type="submit"
                     style={{
-                        backgroundColor: 'lightgreen',
-                        color: 'white',
-                        padding: '10px 20px',
-                        border: 'none',
-                        borderRadius: '5px',
+                        backgroundColor: 'lightgreen', 
+                        color: 'white', 
+                        padding: '10px 20px', 
+                        border: 'none', 
+                        borderRadius: '5px', 
                         cursor: 'pointer',
-                        fontSize: '16px',
+                        fontSize: '16px', 
+                        display:'flex',
+                        marginLeft:'auto',
+                        marginRight: 'auto'
                     }}
                 >
                     Submit Review
