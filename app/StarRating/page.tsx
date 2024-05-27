@@ -1,8 +1,14 @@
-"use client"
+// app/StarRating/page.tsx
+'use client';
 import React from 'react';
 
-const StarRating = ({ value, onChange }) => {
-    const handleClick = (rating) => {
+interface StarRatingProps {
+    value: number;
+    onChange: (value: number) => void;
+}
+
+const StarRating: React.FC<StarRatingProps> = ({ value, onChange }) => {
+    const handleClick = (rating: number) => {
         onChange(rating);
     };
 
